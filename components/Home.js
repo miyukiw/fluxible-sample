@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'fluxible-router';
 
 class Home extends React.Component {
     render() {
@@ -6,6 +7,7 @@ class Home extends React.Component {
             <div>
                 <h2>Home</h2>
                 <p>Welcome to the site!</p>
+                <NavLink routeName='user' navParams={{id: 'miyukiw'}}>miyukiw</NavLink>
             </div>
         );
     }

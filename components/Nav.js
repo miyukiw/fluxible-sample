@@ -14,11 +14,15 @@ class Nav extends React.Component {
                 className = 'pure-menu-selected';
             }
 
-            return (
-                <li className={className} key={link.path}>
-                    <NavLink routeName={link.page} activeStyle={{backgroundColor: '#eee'}}>{link.title}</NavLink>
-                </li>
-            );
+            if (link.navLink) {
+                return (
+                    <li className={className} key={link.path}>
+                        <NavLink routeName={link.page} activeStyle={{backgroundColor: '#eee'}}>{link.title}</NavLink>
+                    </li>
+                );
+            } else {
+                return;
+            }
         });
 
         return (
