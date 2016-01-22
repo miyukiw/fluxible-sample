@@ -3,16 +3,28 @@ import api from '../services/UserService';
 
 var Actions = {
 
-  getUser(context, payload, done) {
+  getUser(context, params, done) {
     context.dispatch('GET_USER_START');
-    var userId = payload.get('params').get('id');
-    api.getUser({id: userId}, function (err, data) {
-      context.dispatch('GET_USER_SUCCESS', data);
+    api.getUser({id: params.id}, function (err, data) {
+      if (err) {
+        context.dispatch('GET_USER_FAILURE', err);
+      } else {
+        context.dispatch('GET_USER_SUCCESS', data);
+      }
       done();
     });
   },
 
-  clearUser(context, payload, done) {
+  getFollowers(context, params, done) {
+    context.dispatch('GET_FOLLOWERS_START');
+    var url = params.url;
+    api.getFollowers({url: url}, function (err, data) {
+      context.dispatch('GET_FOLLOWERS_SUCCESS', data);
+      done();
+    });
+  },
+
+  clearUser(context, params, done) {
     context.dispatch('CLEAR_USER');
   }
 };

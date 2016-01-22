@@ -26,7 +26,7 @@ export default {
         action: (context, payload, done) => {
             console.log(payload.toJS()); //show params
             console.log(payload.get('params').get('id')); //show id
-            context.executeAction(userAction.getUser, payload, function(){
+            context.executeAction(userAction.getUser, {id: payload.get('params').get('id')}, function(){
               done();
             });
         }

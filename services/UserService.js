@@ -7,10 +7,21 @@ module.exports = {
     request.get(url)
     .end((err, res) => {
       if (err) {
-        return done(err);
+        return callback(err);
       }
 
       callback(null, res.body);
     });
-  }
+  },
+
+  getFollowers: function(params, callback) {
+    request.get(params.url)
+    .end((err, res) => {
+      if (err) {
+        return callback(err);
+      }
+
+      callback(null, res.body);
+    });
+  },
 };
